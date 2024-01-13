@@ -30,7 +30,8 @@ apt install -y docker-ce docker-ce-cli containerd.io
 curl -L "https://github.com/docker/compose/releases/download/1.29.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-# 创建docker-compose.yml文件
+# 创建docker-compose.yml文件并提示用户输入密码
+read -p "请输入shadowsocks-libev密码: " ss_password
 cat <<EOF > docker-compose.yml
 version: '3'
 services:
@@ -39,7 +40,7 @@ services:
     ports:
       - "8388:8388"
     environment:
-      - PASSWORD=14dashabia
+      - PASSWORD=$ss_password
       - METHOD=aes-256-gcm
     restart: always
 EOF
@@ -50,4 +51,4 @@ docker-compose up -d
 # 设置Docker开机自启
 systemctl enable docker
 
-echo "Freedom！"
+echo "脚本执行完成！"
