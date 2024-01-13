@@ -32,15 +32,6 @@ chmod +x /usr/local/bin/docker-compose
 
 # 拉取docker-compose.yml文件
 curl -sSLO https://github.com/shadowsocks/shadowsocks-libev/raw/master/docker/alpine/docker-compose.yml
-# 提示用户输入新的Shadowsocks密码
-read -p "请输入新的Shadowsocks密码: " new_password
-
-# 使用sed命令替换密码
-sed -i "s/PASSWORD=.*/PASSWORD=$new_password/" docker-compose.yml
-
-# 启动shadowsocks-libev服务
-docker-compose up -d
-
 # 设置Docker开机自启
 systemctl enable docker
 
