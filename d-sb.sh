@@ -32,8 +32,7 @@ chmod +x /usr/local/bin/docker-compose
 
 # 创建docker-compose.yml文件并提示用户输入密码
 read -p "请输入shadowsocks-libev密码: " ss_password
-cat <<EOF > docker-compose.yml
-version: '3'
+echo "version: '3'
 services:
   shadowsocks:
     image: shadowsocks/shadowsocks-libev
@@ -42,8 +41,7 @@ services:
     environment:
       - PASSWORD=$ss_password
       - METHOD=aes-256-gcm
-    restart: always
-EOF
+    restart: always" > docker-compose.yml
 
 # 启动shadowsocks-libev服务
 docker-compose up -d
