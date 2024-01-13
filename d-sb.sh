@@ -24,7 +24,7 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 apt update
 
 # 安装Docker引擎
-apt install -y docker-ce docker-ce-cli containerd.io
+apt install -y docker-ce
 
 # 安装Docker Compose 1.29版本
 curl -L "https://github.com/docker/compose/releases/download/1.29.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
